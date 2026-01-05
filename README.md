@@ -1,19 +1,19 @@
 # AIOps + DevSecOps + SRE Lab
 
-🔹 Contexto
+🔹 Context
 
-Simulação de incidente real em ambiente Kubernetes utilizando AIOps para detecção, RCA e remediação automática.
+Simulation of a real-world incident in a Kubernetes environment using AIOps for automatic detection, RCA, and remediation.
 
-🔹 Problema
+🔹 Problem
 
-Latência intermitente causada por degradação em banco de dados, gerando erros em cascata.
+Intermittent latency caused by database degradation, generating cascading errors.
 
-🔹 Solução AIOps
+🔹 AIOps Solution
 
 AI log clustering
 
-Root Cause Analysis automático
+Automatic Root Cause Analysis
 
 Auto-remediation via workflow
 
-Comunicação via ChatOps
+Communication via ChatOps
