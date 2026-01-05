@@ -1,19 +1,16 @@
 # AIOps + DevSecOps + SRE Lab
 
-🔹 Context
+Hands-on lab simulating real SRE scenarios:
+- Latency injection
+- Prometheus + Grafana
+- p95 / p99 SLIs
+- Incident simulation
+- Roadmap to Kubernetes + Terraform
 
-Simulation of a real-world incident in a Kubernetes environment using AIOps for automatic detection, RCA, and remediation.
+## Quick Start
+docker-compose up --build
 
-🔹 Problem
-
-Intermittent latency caused by database degradation, generating cascading errors.
-
-🔹 AIOps Solution
-
-AI log clustering
-
-Automatic Root Cause Analysis
-
-Auto-remediation via workflow
-
-Communication via ChatOps
+## Documentation
+👉 Full step-by-step documentation: docs/how-to-lab.md
+👉 Incidents: incidents/
+👉 Runbooks: runbooks/
