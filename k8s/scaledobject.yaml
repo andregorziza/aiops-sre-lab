@@ -1,0 +1,21 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: aiops-sre-app
+spec:
+  scaleTargetRef:
+    name: aiops-sre-app
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus.default.svc:9090
+        metricName: http_request_latency_p95
+        threshold: "1.5"
+        query: |
+          histogram_quantile(
+            0.95,
+            sum(rate(http_request_duration_seconds_bucket[2m])) by (le)
+          )
+
