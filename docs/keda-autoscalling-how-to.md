@@ -17,6 +17,8 @@ Não é o caminho recomendado para métricas de latência (p95/p99)
 
 👉 Decisão arquitetural: usar KEDA, que executa PromQL diretamente, sem depender da Custom Metrics API.
 
+####################################################################################################################
+
 🧱 Arquitetura Final
 Aplicação → Prometheus → KEDA → HPA → Deployment
 
@@ -28,6 +30,8 @@ KEDA executa PromQL real
 KEDA cria e gerencia o HPA automaticamente
 
 Escala ocorre com base na experiência do usuário (latência)
+
+###################################################################################################################
 
 📦 Pré-requisitos
 
@@ -46,7 +50,7 @@ helm install keda kedacore/keda \
   --create-namespace
 
 
-Validar:
+####Validar####
 
 kubectl get pods -n keda
 
@@ -76,7 +80,7 @@ spec:
           )
 
 
-Aplicar:
+###Aplicar###
 
 kubectl apply -f k8s/scaledobject.yaml
 
@@ -94,7 +98,7 @@ Verificar HPA criado automaticamente
 kubectl get hpa
 
 
-Exemplo:
+###Exemplo###
 
 keda-hpa-aiops-sre-app
 
@@ -142,6 +146,8 @@ aumento no número de pods
 HPA ajustando replicas
 
 ScaledObject mudando ACTIVE para True
+
+####################################################################################################
 
 📊 Validação no Prometheus (opcional)
 
