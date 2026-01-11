@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aiops-sre-app
+  labels:
+    app: aiops-sre-app
+spec:
+  selector:
+    app: aiops-sre-app
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+

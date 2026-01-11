@@ -1,0 +1,19 @@
+rules:
+  default: false
+  custom:
+    - seriesQuery: 'http_request_duration_seconds_bucket{route="/db"}'
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+          pod:
+            resource: pod
+      name:
+        matches: "http_request_duration_seconds_bucket"
+        as: "http_request_latency_p95"
+      metricsQuery: |
+        histogram_quantile(
+          0.95,
+          sum(rate(http_request_duration_seconds_bucket{route="/db"}[2m])) by (le, pod)
+        )
+

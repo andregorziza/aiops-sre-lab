@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aiops-sre-app
+  labels:
+    app: aiops-sre-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aiops-sre-app
+  template:
+    metadata:
+      labels:
+        app: aiops-sre-app
+    spec:
+      containers:
+        - name: app
+          image: aiops-sre-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+

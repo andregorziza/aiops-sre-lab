@@ -1,0 +1,13 @@
+rules:
+  default: false
+  custom:
+    - seriesQuery: 'http_request_duration_seconds_bucket{le="+Inf"}'
+      resources:
+        overrides:
+          pod:
+            resource: pod
+      name:
+        as: "http_requests_per_second"
+      metricsQuery: |
+        sum(rate(http_request_duration_seconds_bucket{le="+Inf"}[1m])) by (pod)
+
